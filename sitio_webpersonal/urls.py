@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from core import views as core_views
 from portfolio import views as portfolio_views
+from usuario import views as usuario_views
 
 from django.conf import settings
 
@@ -26,6 +27,8 @@ urlpatterns = [
     path('portfolio/',portfolio_views.portfolio, name='portfolio'),
     path('contacto/',core_views.contact, name='contacto'),
     path('admin/', admin.site.urls),
+    path('login/', usuario_views.login, name='login'),
+    path('logout', usuario_views.logout, name='logout'),
 ]
 
 if settings.DEBUG:
