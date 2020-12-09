@@ -6,41 +6,21 @@
 
 
 {% block headers %}
-<h1>Sobre nosotros</h1>
-<span class="subheading">Admins</span>
+<h1>Acerca de</h1>
+<span class="subheading">Biografía</span>
 {% endblock %}
 
 {% block content %}
-<center><h1 class="display-4" style="font-family:'Bahnschrift'">NUESTRA PÁGINA</h1></center>
-<p class="text-justify">Nuestra idea al momento de crear este sitio fue para poder compartir nuestra pasión por los autos en específico los autos deportivos, lo que vera a continuación son perspectivas de cada integrante como cuales a su criterio son sus mejores autos, en el sitio encontraran mucha información de autos deportivos ya sea datos en específicos como por ejemplo cuál ha sido el vehículo más rápido del mundo, o ver un TOP 10 de autos en general o un TOP mejores marcas y por que estas marcas en especificas han sido premiadas en forma global por la misma gente que compra estos autos y por las grandes empresas de reconocimientos.</p>
-<!-- Inicio cards -->
-<div class="container">
-    <div class="row mt-5 mb-5">   
-            {% for adm in admins %}
-            <div class="p-2 col-sm-12 col-md-6">
-                <div class="card shadow-lg p-0">
-                    <img class="card-img-top img-fluid" src="{{adm.imagen_auto.url}}" alt="img auto">
-                    <div class="text-center">
-                        <img class="img-fluid rounded-circle imagen_central" src="{{adm.imagen.url}}" alt="{{adm}}" width="40%">
-                    </div>                    
-                    <div class="card-body">
-                        <h4 class="card-title">{{adm}}</h4>
-                        
-                        {% for li in adm.get_biografia %}
-                        <li type="card-text">{{li.descripcion}}</li>
-                        {% endfor %}
-                    </div>
-                    <div class="card-footer">
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-                        
-            
-            
+<div class="row">   
+    <div class="col-lg-3 col-md-4 offset-lg-1">
+        <img class="img-fluid avatar" src="{% static 'core/img/avatar.png' %}" alt="">
     </div>
-</div>
-<!--Fin cards -->
+    <div class="col-lg-7 col-md-8">
+        <h2 class="section-heading">Armando Casas</h2>   
+        <p>Nacido en... lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit...</p>
+    </div>
+</div>  
 {% endblock %}
 
 

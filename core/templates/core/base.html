@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>{% block title %}{% endblock %} | CarsDetail</title>
+        <title>{% block title %}{% endblock %} | Web Personal</title>
 
         <!-- Estilos y fuentes del template  -->
         {% load static %}
@@ -16,12 +16,12 @@
         <link href="{% static 'core/css/styles.css' %}"  rel="stylesheet">
 
     </head>
-<body class="bg-light">
+<body>
 
     <!-- Navegación -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">CarsDetail</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Armando Casas</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menú
             <i class="fa fa-bars"></i>
@@ -29,22 +29,16 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                <a class="nav-link" href="{% url 'home' %}">Portada</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">Sobre Nosotros</a>
+                <a class="nav-link" href="{% url 'about' %}">Acerca de</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Tablas de Records</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Historia</a>
+                <a class="nav-link" href="{% url 'portfolio' %}">Portafolio</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                 </li>
             </ul>
             </div>
@@ -76,7 +70,7 @@
     {% endif %}
 
     <!-- Pié de página -->
-    <footer class="bg-white">
+    <footer>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
@@ -106,61 +100,16 @@
                 </a>
               </li>
             </ul>
-            
+            <p class="copyright text-muted">Copyright &copy; 2020 · Armando Casas (Ingeniero Informático) </p>
           </div>
         </div>
       </div>
-      <div class="container text-center text-md-left">
-        <div class="row mt-2 mb-2">
-            <div class="col-md-4">
-                <ul class="bd-footer-links">
-                    <a class="nav-link" href="tablas.html">TABLAS DE RECORDS</a>
-                    <a class="nav-link" href="historiatest.html">HISTORIA</a>
-                    <a class="nav-link" href="acerca_de.html">ACERCA DE NOSOTROS</a>
-                    <a class="nav-link" href="contacto.html">CONTACTO</a>
-                </ul>
-            </div>
-            <hr>
-            <div class="col-md-4 text-center">
-                <h5 class="text-uppercase">NEWSLETTER</h5>
-                <p>Suscríbete para recibir nuestras novedades.</p>
-                <form method="POST" id="validar_novedad">
-                  {% csrf_token %}
-                    <div class="form-group">
-                        <label class="font-weight-bold" for="correo_novedad">Correo Electronico </label>
-                        <input class="form-control" type="email" id="correo_novedad" name="correo_novedad" placeholder="Ej. ferrarif50@gmail.com">
-                    </div>
-                
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary" id="enviar" value="Enviar">
-                    </div>
-                </form>
-            </div>
-            <hr>
-            <div class="col-md-4 text-center">
-                <h5 class="text-uppercase">DuocUC</h5>
-                <address>
-                    Diseñado por Team Desarrollo web
-                    Visítanos en:<br>
-                    DuocUC sede de San Joaquin, <br>
-                    Vicuña Mackenna 491,<br>
-                    Santiago, Chile.
-                </address>
-                <a href="https://www.google.com/maps/place/Duoc+UC:+Sede+San+Joaqu%C3%ADn/@-33.4999176,-70.6186558,17z/data=!3m1!4b1!4m5!3m4!1s0x9662d00be4a5fa81:0xcd8eaf5b1d547f64!8m2!3d-33.4999176!4d-70.6164671" id="map" target="_blank">Ver Mapa</a>
-            </div>
-        </div>
-        <p class="copyright text-muted">Copyright &copy; 2020 · Armando Casas (Ingeniero Informático) </p>          
-    </div>  
     </footer>
 
     <!-- Bootstrap y Javascripts -->
     <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'core/js/clean-blog.min.js' %}"></script>
-
-    <!-- jQueryValidation.org -->
-    <script src="{% static 'core/js/jquery.validate.js' %}"></script>
-    <script src="{% static 'core/js/validacion_novedad.js' %}"></script>
 
   </body>
 
