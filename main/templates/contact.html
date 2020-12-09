@@ -1,0 +1,66 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %} Contacto {% endblock %}
+
+{% block content%}
+
+<section class="banner-contact">
+  <div class="container">
+    <div class="content-center">
+      <h1 style="font-size: 50px;font-weight: bold; margin-top: 220px;">Contactanos</h1>
+    </div>
+  </div>
+</section>
+
+<section id="Contacto" class="content-center">
+  <div class="cuadrado">
+    <h4>Formulario</h4>
+    <hr>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="email">Correo Electrónico</label>
+        <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" required
+          placeholder="Ejemplo@Correo.com" style="text-align: center;">
+      </div>
+
+      <div class="form-group">
+        <label for="nombre">Ingresar Nombre </label>
+        <input name= "nombre" type="text" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Juan" style="text-align: center;">
+      </div>
+
+      <div class="form-group">
+        <label for="apellidos">Ingresar Apellidos </label>
+        <input name="apellidos" type="text" class="form-control" id="apellidos" aria-describedby="emailHelp" required
+          placeholder="Perez Lopez" style="text-align: center;">
+      </div>
+
+      <div class="form-group">
+        <label for="telefono">Ingresar Número de Contacto </label>
+        <input name="telefono" type="text" class="form-control" id="telefono" aria-describedby="emailHelp " required
+          placeholder="9 8744 3453" style="text-align: center;" maxlength="9">
+      </div>
+      <div id="botoncito">
+        <button type="submit" class="btn btn-primary">Enviar Formulario</button>
+      </div>
+
+    </form>
+  </div>
+
+
+  <div class="cuadradoMap">
+    <h4>¿Donde nos ubicamos?</h4>
+    <hr>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.4170791383535!2d-70.70033103255383!3d-33.51654019244764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662db4256a97df3%3A0xab7b4e8c1627bd02!2sPH613-Avenida%20Cerrillos%20%2F%20Esq.%20Av.%20Frei%20Montalva!5e0!3m2!1ses-419!2scl!4v1600899705529!5m2!1ses-419!2scl"
+      width="auto" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+      tabindex="0">
+    </iframe>
+  </div>
+  
+
+</section>
+
+
+{% endblock content%}
