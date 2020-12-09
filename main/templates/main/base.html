@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%} Believe in our House {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{%static 'bootstrap-icons-1.1.0/house.svg'%}" />
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="{%static 'js/popper.min.js'%}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+    {% block link%}
+    {% endblock %}
+    
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-lg">
+      <a href="{% url 'main' %}"><img src="{%static 'bootstrap-icons-1.1.0/house.svg'%}" width="30px" height="30px" ></a>
+      <a class="navbar-brand" href="{% url 'main' %}" >Believe in our Houses</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border: 0ch;"> 
+        <img src="{%static 'bootstrap-icons-1.1.0/justify.svg'%}" style="height: 30px; width: 30px;">
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="{% url 'main' %}">Inicio </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}">¿Quienes somos?</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact' %}" >Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'lista_contact' %}" >Listado de Contactos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'gallery' %}">Galería</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'medida' %}" >Modelos a medida</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'metraje' %}" >Modelos a metraje</a>
+            </li>
+            
+          </ul>
+      </div>
+    </div>
+  </nav>
+  
+
+  {% block content %}
+
+  {% endblock %}
+
+
+
+
+<div class="footer-main-div">
+  <div class="footer-social-icons">
+    <ul>
+      <li><a href="#" target="blank"><ion-icon name="logo-facebook"></ion-icon></a></li>
+      <li><a href="#" target="blank"><ion-icon name="logo-twitter"></ion-icon></a></li>
+      <li><a href="#" target="blank"><ion-icon name="logo-youtube"></ion-icon></a></li>
+    </ul>
+  </div>
+
+  <div class="footer-menu-one">
+    <ul>
+      <li><a href="{% url 'main' %}">Inicio</a></li>
+      <li><a href="{% url 'contact' %}">Contactanos</a></li>
+      <li><a href="{% url 'gallery' %}">Galeria</a></li>
+    </ul>
+  </div>
+</div>
+{% block script %}
+{% endblock %}
+</body>
+</html>

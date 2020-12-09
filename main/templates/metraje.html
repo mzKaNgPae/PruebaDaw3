@@ -1,0 +1,53 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Modelos a metraje {% endblock %}
+
+{% block content%}
+<section class="banner-metraje">
+  <div class="container">
+    <div class="content-center">
+      <h1 style="font-size: 50px;font-weight: bold; margin-top: 220px;">Modelos a metraje</h1>
+    </div>
+  </div>
+</section>
+
+<section id="info">
+  <div class="container">
+    <div class="content-center">
+      <h1>Crea la casa de tus sueños</h1>
+      <p>Aquí podrás elegir la casa según el metraje deseado, ya sea veinte, cincuenta, cien o más metros cuadrados solo ingresa tus metros deseados y te daremos el precio estimado.<br>¡Cotiza ahora! </p>
+      <section id="Contacto" class="content-center">
+        <div class="container-medidas" style="border: 1px; border-color: black;">
+          <h4>Completar</h4>
+          <hr>
+          <form method="GET">
+            <div>
+              
+              <label for="inputZip">Metros cuadrados deseados</label>
+              <input type="number" min="20" class="form-control" id="metros_cuadrados" name = "metros_cuadrados" type="hidden" value="{{from.metros_cuadrados.value}}">
+            </div>
+            <div id="botoncito">
+              <button type="submit" class="btn btn-primary" style="margin-top: 100px;">Confirmar</button>
+            </div>
+          </form>
+        </div>
+        <div class="cuadradoMap">
+          <h4>Resultado</h4>
+          <hr>
+          <div class="card" style="width: 18rem;">
+            <img src="{% static 'img/casametraje.jpg'%}" class="card-img-top" style="height: 178px;">
+            <div class="card-body">
+              <ul style="text-align: left;">
+                <li>Precio: <label for="lbl_precio" id="lbl_precio" name="lbl_precio">{{lbl_precio}} UF</label> </li>
+                <li>Metros: <label for="lbl_metros" id="lbl_metro" name="lbl_metro">{{ metros_cuadrados }}<sup>2</sup></label> </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+
+{% endblock content%}

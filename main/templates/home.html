@@ -1,0 +1,77 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Inicio {% endblock %}
+
+{% block content%}
+<section class="foto_principal">
+  <div class="container">
+    <div class="content-center" style="margin-top: 150px;">
+      <h1 style="font-size: 70px;">Bienvenido</h1><br>
+      <p>Este es el sitio oficial de <i>Believe in our Houses&copy;</i> donde podrás encontrar una gran variedad de hogares de alto nivel que se acomoden a tus gustos. También podras ver algunos de nuestros trabajos mas destacados y si te interesa alguna de nuestras obras podrás ponerte en contacto con nosotros. </p> 
+    </div>
+  </div>
+</section>
+
+<section id="info">
+  <div class="container">
+    <div>
+      <h1 style="text-align: center;">Nuestras casas más destacadas</h1>
+      <p style="text-align: center;">Te presentamos los 4 modelos más destacados de nuestro trabajo.
+        <br>Estos nos representan como equipo de trabajo debido a su gran calidad,<br> estructura y base de cada obra.
+        Si estas interesado puedes contactarnos, no pierdas la oportunidad de tener la casa de tus sueños.
+      </p>
+    </content-center>
+  </div>
+</section> 
+<section id="fotos_home">
+  <div class="card" style="width: 18rem;">
+    <img src="{% static 'img/casa6.jpg'%}" class="card-img-top" style="height: 178px;">
+    <div class="card-body">
+      <p style="font-size: medium;">Hermosa cabaña hecha de madera de arce, dos pisos de comodidad con sus 4 dormitorios y 2 baños. Excelente para ir de vacaciones.</p>
+      <ul>
+        <li>Precio: 6.405.11 UF  </li>
+        <li>Materiales: Madera de arce, hormigón y cerámicas </li>
+        <li>Metros: 80<sup>2</sup></li>
+        <li>Estilo: Rural</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="{% static 'img/casa7.jpg'%}" class="card-img-top" style="height: 178px;">
+    <div class="card-body">
+      <p style="font-size: medium;">Hecha de madera de arce, dos pisos, 3 piezas y 1 baño. Si buscas comodidad y simplicidad para tus vacaciones, esta es tu cabaña.</p>
+      <ul>
+        <li>Precio: 6.924.45 UF </li>
+        <li>Materiales: Madera de arce, hormigón y cerámicas </li>
+        <li>Metros: 80<sup>2</sup> </li>
+        <li>Estilo: Rural</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="{% static 'img/casa.jpeg'%}" class="card-img-top" style="height: 178px;">
+    <div class="card-body">
+      <p style="font-size: medium;">Vive con elegancia con esta casa con arquitectura minimalista y su amplio garage. Comodidad para la urbanidad. </p>
+      <ul>
+        <li>Precio: 12.117.78 UF </li>
+        <li>Materiales: Madera de roble, loza, cerámicas y cemento </li>
+        <li>Metros: 120<sup>2</sup></li>
+        <li>Estilo: Moderna </li>
+      </ul>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="{% static 'img/casa2.jpg'%}" class="card-img-top" style="height: 178px;">
+    <div class="card-body">
+      <p style="font-size: medium;">¿Una parcela elegante? Sí, hemos hecho esta casa especialmente pensada para una gran familia que quiera vivir en las afueras de las ciudades.</p>
+      <ul>
+        <li>Precio: 13.848.89 UF </li>
+        <li>Materiales: Madera de roble, loza, cerámicas y cemento </li>
+        <li>Metros: 150<sup>2</sup></li>
+        <li>Estilo: Moderna </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
