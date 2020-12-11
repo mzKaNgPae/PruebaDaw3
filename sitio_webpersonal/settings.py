@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'core',
     'usuario',
     'auto',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,5 @@ STATIC_URL = '/static/'
 #Media Files (subir la imagen de un proyecto)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,"media")
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

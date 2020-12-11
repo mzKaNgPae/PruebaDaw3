@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 # Create your models here.
 
 
@@ -24,6 +24,9 @@ class Auto(models.Model):
     
     def __str__(self):
         return self.marca.marca + ' ' + self.modelo
+
+    def get_absolute_url(self):
+        return reverse('modificar-auto', kwargs={'pk': self.pk})
         
 class Competencia(models.Model):
     nombre = models.CharField(max_length=70)

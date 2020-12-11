@@ -64,7 +64,6 @@
         <h4 >Monto:</h4>
         <input id="monto" class="col-10 mb-3" type="text" placeholder="Ingrese un valor" list="dolar_autos">
         <datalist id="dolar_autos">
-            
             {% for a in top10 %}
                 <option value="{{a.precio}}"></option>
             {% endfor %}

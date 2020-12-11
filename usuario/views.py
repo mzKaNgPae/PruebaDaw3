@@ -21,7 +21,7 @@ def login(request):
             if user.usuario.tipo_usuario.id == 2:
                 return redirect('home')
             else:
-                return redirect('about')
+                return redirect('home-admin')
         else:
             return redirect('login')
     if request.method == 'GET':

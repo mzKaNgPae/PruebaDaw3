@@ -45,6 +45,12 @@
                 <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                 </li>
+                {% if user.usuario.tipo_usuario.id == 1 %}
+                <li class="nav-item">
+                  <a class="nav-link pl-0 pt-2" href="{% url 'home-admin' %}"><ion-icon name="create" style="font-size: 20px;"></ion-icon></a>
+                </li>
+                {% endif %}
+                  
             </ul>
             </div>
         </div>
@@ -154,6 +160,7 @@
 
     <!-- Bootstrap y Javascripts -->
     <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'core/js/clean-blog.min.js' %}"></script>
 

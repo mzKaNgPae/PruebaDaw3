@@ -31,6 +31,10 @@ urlpatterns = [
     path('logout/', usuario_views.logout, name='logout'),
     path('tablas-de-records/', auto_views.tablas, name='tablas-de-records'),
     path('historia-fabricantes/', auto_views.historia, name='historia-fabricantes'),
+    path('home-admin/', core_views.home_admin, name='home-admin'),
+    path('listado-autos/', auto_views.listado_autos, name='listado-autos'),
+    path('modificar-auto/<int:pk>/', auto_views.ModificarAutoView.as_view(), name='modificar-auto'),
+    path('añadir-auto/', auto_views.CrearAutoView.as_view(), name='añadir-auto'),
 ]
 
 if settings.DEBUG:

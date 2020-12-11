@@ -13,3 +13,8 @@ def rut_valido(rut, dv):
     if dv_esperado == 10:
         dv_esperado = 'K'
     return str(dv) == str(dv_esperado)
+
+def usuario_administrador(request):
+    if request.user.usuario.tipo_usuario.id == 1:
+        return True
+    return False

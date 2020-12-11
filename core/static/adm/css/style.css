@@ -1,0 +1,39 @@
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: .5rem .8rem;
+}
+
+.nav-link ion-icon {
+    margin-right: 1rem;
+}
+
+.user-panel img{
+    height: 2.1rem;
+}
+
+
+.no-mg ion-icon{
+    margin: 0;
+}
+
+.icon-md {
+    font-size: 24px;
+}
+
+.icon-s {
+    font-size: 18px;
+}
+
+.info {
+    color:white;
+}
+
+.sp-1 {
+    padding-left: .5rem!important;
+    padding-right: .5rem!important;
+}
+
+
+
+

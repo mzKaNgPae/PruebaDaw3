@@ -1,0 +1,30 @@
+{% extends 'adm/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Añadir Auto{% endblock title %}
+
+{% block content_title %}Añadir Auto{% endblock %}
+
+{% block content_breadcrumb %} 
+    <li class="breadcrumb-item"><a href="{% url 'home-admin' %}">Inicio</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Añadir Auto</li>
+{% endblock %}
+
+
+{% block content %}
+<div class="card">
+    <div class="card-header border0 bg-primary text-light">
+        <div class="d-flex justify-content-between">
+            <h3 class="card-title">Formulario</h3>
+        </div>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            {{ form | crispy }}
+            <button type="submit" class="btn btn-outline-primary" value="Save">Añadir</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

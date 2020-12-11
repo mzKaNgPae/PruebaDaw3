@@ -12,7 +12,7 @@ class TipoUsuario(models.Model):
 
 class Usuario(models.Model):
     usuario = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
-    imagen = models.ImageField(upload_to='bd/usuarios', null=True)
+    imagen = models.ImageField(upload_to='bd/usuarios', default='bd/usuarios/no-img.jpg')
     imagen_auto = models.ImageField(upload_to='bd/usuarios', null=True)
     rut = models.CharField(
         max_length=10,
