@@ -27,7 +27,7 @@ urlpatterns = [
     path('contacto/',core_views.contact, name='contacto'),
     path('admin/', admin.site.urls),
     path('login/', usuario_views.login, name='login'),
-    path('signup/', usuario_views.login, name='signup'),
+    path('signup/', usuario_views.signup, name='signup'),
     path('logout/', usuario_views.logout, name='logout'),
     path('tablas-de-records/', auto_views.tablas, name='tablas-de-records'),
     path('historia-fabricantes/', auto_views.historia, name='historia-fabricantes'),
