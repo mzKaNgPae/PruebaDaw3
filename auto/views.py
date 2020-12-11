@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Auto,Competencia
+from .models import Auto,Competencia,Imagenes_Marca,Marca
 from django.contrib.auth.decorators import login_required
 from usuario.validators import usuario_administrador
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -20,6 +20,9 @@ def tablas(request):
 @login_required
 def historia(request):
     ctx = {}
+    ctx['i_marcas'] = Imagenes_Marca.objects.all()
+    ctx['marcas'] = Marca.objects.all()
+    
     return render(request, 'historia.html', ctx)
 
 @login_required

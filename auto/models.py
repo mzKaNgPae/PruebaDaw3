@@ -12,6 +12,13 @@ class Marca(models.Model):
     def __str__(self):
         return self.marca
 
+class Imagenes_Marca(models.Model):
+    marca = models.ForeignKey(Marca,on_delete=models.CASCADE)
+    imagen = models.ImageField(upload_to='bd/marcas')
+
+    def __str__(self):
+        return f'{self.marca} - {self.id}'
+
 class Auto(models.Model):
     imagen = models.ImageField(upload_to='bd/autos',null=True,blank=True)
     marca = models.ForeignKey(Marca,on_delete=models.CASCADE)
