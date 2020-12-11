@@ -1,19 +1,19 @@
 from django.shortcuts import render
-from .models import Auto
-
+from .models import Auto,Competencia
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-def lista_autos(request):
-    autos = Auto.objects.all()
+@login_required
+def tablas(request):
+    ctx = {}
+    top10 = Auto.objects.all().order_by('-velocidad_maxima')[0:10]
+    ctx['top10'] = top10
+    competencias = Competencia.objects.all().order_by('nombre','-victorias')
+    ctx['competencias'] = competencias
 
-    page = request.GET.get('page',1)
-    paginator = Paginator(projects,3)
+    return render(request, 'tablas.html', ctx)
 
-    try:
-        projects = paginator.page(page)
-    except PageNotAnInteger:
-        projects = paginator.page(1)
-    except EmptyPage:
-        projects = paginator.page(paginator.num_pages)
-
-    return render(request, "portfolio/portfolio.html",{'projects':projects})
+@login_required
+def historia(request):
+    ctx = {}
+    return render(request, 'historia.html', ctx)

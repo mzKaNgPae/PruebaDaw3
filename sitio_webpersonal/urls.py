@@ -16,19 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from core import views as core_views
-from portfolio import views as portfolio_views
 from usuario import views as usuario_views
+from auto import views as auto_views
 
 from django.conf import settings
 
 urlpatterns = [
     path('',core_views.home, name='home'),
     path('about/',core_views.about, name='about'),
-    path('portfolio/',portfolio_views.portfolio, name='portfolio'),
     path('contacto/',core_views.contact, name='contacto'),
     path('admin/', admin.site.urls),
     path('login/', usuario_views.login, name='login'),
-    path('logout', usuario_views.logout, name='logout'),
+    path('signup/', usuario_views.login, name='signup'),
+    path('logout/', usuario_views.logout, name='logout'),
+    path('tablas-de-records/', auto_views.tablas, name='tablas-de-records'),
+    path('historia-fabricantes/', auto_views.historia, name='historia-fabricantes'),
 ]
 
 if settings.DEBUG:

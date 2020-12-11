@@ -52,3 +52,14 @@ footer a.nav-link, footer p, footer address, #map {
 {
     color: #5b75eb;
 }
+
+.contenidos{
+  padding: 30px;
+  background:rgba(0,0,0,.7);
+  border: solid 1px silver;
+  width: 450px;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 10px;
+  color:#fff;
+}

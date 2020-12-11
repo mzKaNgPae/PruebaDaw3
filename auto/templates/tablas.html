@@ -1,0 +1,237 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Tablas de Records{% endblock %}
+
+{% block img_background %}{% static 'core/img/tablas-bg.jpg' %}{% endblock %}
+
+
+{% block link %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link href="{% static 'core/css/styles.css' %}"  rel="stylesheet">
+{% endblock link %}
+
+{% block headers %}
+<h1>Tablas de Records</h1>
+<span class="subheading">Infórmate</span>
+{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <h1 class="display-4 text-center mb-3" id="top_velocidad" style="font-family:'Bahnschrift'">TOP 10 AUTOS MÁS RÁPIDOS DEL MUNDO</h1>
+    
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead class="bg-dark text-light">
+            <tr>
+                <th>MARCA</th>
+                <th>MODELO</th>
+                <th>AÑO</th>
+                <th>0-100 k/h</th>
+                <th>VELOCIDAD MÁXIMA</th>
+                <th>PRECIO (dólares)</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for a in top10 %}
+                <tr>
+                    <td>{{a.marca}}</td>
+                    <td>{{a.modelo}}</td>
+                    <td>{{a.anno}}</td>
+                    <td>{{a.velocidad_partida}}</td>
+                    <td>{{a.velocidad_maxima}} km/h</td>
+                    <td><sup>US$</sup>{{a.precio}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>MARCA</th>
+                <th>MODELO</th>
+                <th>AÑO</th>
+                <th>0-100 k/h</th>
+                <th>VELOCIDAD MÁXIMA</th>
+                <th>PRECIO (dólares)</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<div class="mb-4">
+    <h2 class="text-center mb-3" style="font-family:'Bahnschrift'">Convertidor de Dólares(USD) a Peso Chileno(CLP)</h2>
+    <div class="contenidos">
+        <h4 >Monto:</h4>
+        <input id="monto" class="col-10 mb-3" type="text" placeholder="Ingrese un valor sin puntos ni comas" list="dolar_autos">
+        <datalist id="dolar_autos">
+            
+            {% for a in top10 %}
+                <option value="{{a.precio}}"></option>
+            {% endfor %}
+        </datalist><br>
+        <button onclick="convertirMoneda()">
+            Convertir a CLP
+        </button>
+
+        <div id="resultadoCLP"><em>Los precios indicados pertenecen a la lista de autos de forma ordenada</em></div>   
+    </div>
+</div>
+<hr>
+<div class="mb-4">
+    <h1 class="display-4 text-center mb-3" id="evento_auto" style="font-family:'Bahnschrift'">TOP 5 FABRICANTES CON MÁS TÍTULOS EN EVENTOS DE AUTOMOVILISMO</h1>
+    <hr>
+    <h2 class="mb-3" style="font-family:'Bahnschrift'">24 Horas de LeMans</h2>
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead class="bg-dark text-light">
+            <tr>
+                <th>MARCA</th>
+                <th>PAIS</th>
+                <th>VICTORIAS</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for c in competencias %}
+            
+            {% if c.nombre == '24 Horas de LeMans' %}
+                <tr>
+                    <td>{{c.marca_campion}}</td>
+                    <td>{{c.marca_campion.get_pais_display}}</td>
+                    <td>{{c.victorias}}</td>
+                </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>MARCA</th>
+                <th>PAIS</th>
+                <th>VICTORIAS</th>
+            </tr>
+        </tfoot>
+    </table>
+    <h2 class="mb-3" style="font-family:'Bahnschrift'">INDY 500 (motor)</h2>
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead class="bg-dark text-light">
+            <tr>
+                <th>MARCA</th>
+                <th>PAIS</th>
+                <th>VICTORIAS</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for c in competencias %}
+            
+            {% if c.nombre == 'INDY 500 (motor)' %}
+                <tr>
+                    <td>{{c.marca_campion}}</td>
+                    <td>{{c.marca_campion.get_pais_display}}</td>
+                    <td>{{c.victorias}}</td>
+                </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>MARCA</th>
+                <th>PAIS</th>
+                <th>VICTORIAS</th>
+            </tr>
+        </tfoot>
+    </table>
+    <h2 class="mb-3" style="font-family:'Bahnschrift'">Rally Dakar</h2>
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead class="bg-dark text-light">
+            <tr>
+                <th>MARCA</th>
+                <th>PAIS</th>
+                <th>VICTORIAS</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for c in competencias %}
+            
+            {% if c.nombre == 'Rally Dakar' %}
+                <tr>
+                    <td>{{c.marca_campion}}</td>
+                    <td>{{c.marca_campion.get_pais_display}}</td>
+                    <td>{{c.victorias}}</td>
+                </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>MARCA</th>
+                <th>PAIS</th>
+                <th>VICTORIAS</th>
+            </tr>
+        </tfoot>
+    </table>
+    <h2 class="mb-3" style="font-family:'Bahnschrift'">Formula 1</h2>
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead class="bg-dark text-light">
+            <tr>
+                <th>MARCA</th>
+                <th>PAIS</th>
+                <th>VICTORIAS</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for c in competencias %}
+            
+            {% if c.nombre == 'Formula 1' %}
+                <tr>
+                    <td>{{c.marca_campion}}</td>
+                    <td>{{c.marca_campion.get_pais_display}}</td>
+                    <td>{{c.victorias}}</td>
+                </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>MARCA</th>
+                <th>PAIS</th>
+                <th>VICTORIAS</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+    
+    
+{% endblock content %} 
+
+{% block script %}
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <script src="{% static 'core/js/dolar.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                pagingType: "simple_numbers",
+                language: {
+                    search: "Filtrar",
+                    paginate: {
+                        first: "Inicio",
+                        previous: "Anterior",
+                        next: "Siguiente",
+                        last: "Fin"
+                    },
+                    info: "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    lengthMenu: "Mostrar _MENU_ entradas",
+                    zeroRecords: "Ningún registro encontrado",
+                    infoFiltered: "(filtrado desde _MAX_ entradas totales)",
+                    infoEmpty: "Mostrando 0 a 0 de 0 entradas",
+                    thousands: ".",
+                    decimal: ",",
+                },
+                ordering: false,
+                lengthMenu: [10],
+            });
+        } );
+    </script>
+{% endblock script %}
+    

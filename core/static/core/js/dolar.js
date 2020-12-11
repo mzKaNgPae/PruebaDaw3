@@ -5,7 +5,7 @@ function moneda(){
     this.mensaje = "Por favor ingrese el monto."
 
     this.convertir = function(monto){
-
+        monto = monto.replace(',','.')
         resultado = monto * this.tipoDeCambio
         var mensajeHTML
         if(resultado <= 0){
