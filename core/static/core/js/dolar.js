@@ -20,6 +20,7 @@ function moneda(){
 
 function convertirMoneda(valorClp){
     var clp = new moneda()
+    console.log(valorClp)
     clp.nombre = "Pesos Chilenos (CLP)"
     clp.tipoDeCambio = valorClp
     var montoSeleccionado = document.getElementById('monto').value
