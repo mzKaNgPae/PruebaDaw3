@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'usuario',
     'auto',
     'crispy_forms',
+    'pwa',
+    'fcm_django',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +130,22 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+#Service Worker path
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'serviceworker.js')
+
+#FCM_DJANGO
+FCM_DJANGO_SETTINGS = {
+         # default: _('FCM Django')
+        "APP_VERBOSE_NAME": "cardetail",
+         # Your firebase API KEY
+        "FCM_SERVER_KEY": "AAAAj27P3PQ:APA91bG7vmuhoLbQ1-VNWOqEYkWFqGG3qNtmcrfMdzWNpbkl8OTmyCYjPgxlNJO51RjoYl5oU3C8w3CHOnMX-Bn-DILk2UZhWkVNKtmSaXx1CwmnSLcm_c_jR3mDhe1PWbebliQjIEsM",
+         # true if you want to have only one active device per registered user at a time
+         # default: False
+        "ONE_DEVICE_PER_USER": False,
+         # devices to which notifications cannot be sent,
+         # are deleted upon receiving error response from FCM
+         # default: False
+        "DELETE_INACTIVE_DEVICES": True,
+}

@@ -5,6 +5,16 @@ from usuario.validators import usuario_administrador
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CrearAuto,ModificarAuto
 from django.views.generic import CreateView,UpdateView
+import requests
+import json
+
+from django.views.decorators.http import require_http_methods
+from django.views.decorators.csrf import csrf_exempt
+
+from django.http import HttpResponse, HttpResponseBadRequest
+
+from fcm_django.models import FCMDevice
+
 # Create your views here.
 
 @login_required
@@ -14,6 +24,17 @@ def tablas(request):
     ctx['top10'] = top10
     competencias = Competencia.objects.all().order_by('nombre','-victorias')
     ctx['competencias'] = competencias
+
+    # CONSUMIR API https://mindicador.cl/ 
+
+    url = 'https://mindicador.cl/api/dolar'
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        content = json.loads(response.content)
+        ctx['valorDolar'] = content['serie'][0]['valor']
+    
+    # CONSUMIR API https://mindicador.cl/ 
 
     return render(request, 'tablas.html', ctx)
 
@@ -53,6 +74,13 @@ class CrearAutoView(LoginRequiredMixin,CreateView):
         return super(CrearAutoView, self).form_valid(form)
         
     def get_success_url(self, **kwargs):
+        nuevo = self.object
+        dispositivos = FCMDevice.objects.filter(active=True)
+        dispositivos.send_message(
+            title='Automovil agregado!!!',
+            body='Se ha sumado a nuestra coleccion: ' + str(nuevo.marca) + ' ' + str(nuevo.modelo) + ' \nNo te lo pierdas!!',
+            icon='/static/adm/img/cardetail-blanco.png'
+        )
         return self.object.get_absolute_url()
 
 class ModificarAutoView(LoginRequiredMixin,UpdateView):

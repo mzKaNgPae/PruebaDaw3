@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from core import views as core_views
 from usuario import views as usuario_views
 from auto import views as auto_views
@@ -35,6 +35,9 @@ urlpatterns = [
     path('listado-autos/', auto_views.listado_autos, name='listado-autos'),
     path('modificar-auto/<int:pk>/', auto_views.ModificarAutoView.as_view(), name='modificar-auto'),
     path('añadir-auto/', auto_views.CrearAutoView.as_view(), name='añadir-auto'),
+    path('', include('pwa.urls')),
+    path('save-token/', core_views.guardar_token, name='save-token'),
+    path('home-admin/save-token/', core_views.guardar_token, name='admin-save-token')
 ]
 
 if settings.DEBUG:

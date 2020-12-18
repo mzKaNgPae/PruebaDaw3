@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+{% block page %}
+    
+{% endblock page %}
+
+{% load pwa %}
+
+{% progressive_web_app_meta %}
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+   https://firebase.google.com/docs/web/setup#available-libraries -->
+   
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAVfHgLuS0Pkw6fVbmPPiK7EjXEXnTSTIo",
+    authDomain: "cardetail-93e21.firebaseapp.com",
+    projectId: "cardetail-93e21",
+    storageBucket: "cardetail-93e21.appspot.com",
+    messagingSenderId: "616039439604",
+    appId: "1:616039439604:web:05813817d72b7cefe2d2a1"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  let messaging = firebase.messaging();
+
+  navigator.serviceWorker
+  .register('http://127.0.0.1:8000/serviceworker.js')
+  .then(function(register){
+    messaging.useServiceWorker(register);
+
+    messaging.requestPermission()
+    .then(function(){
+      console.log('El usuario ha aceptado los mensajes')
+
+      return messaging.getToken();
+    })
+    .then(function(token){
+      console.log(token);
+    
+      fetch('http://127.0.0.1:8000/save-token/',{
+        method:'POST',
+        headers:{
+          'Content-Type':'aplication/json',
+          'Accept':'aplication/json',
+        },
+        body:JSON.stringify({
+          'token':token
+        })
+      })
+      .then(function(resultado){
+        console.log('Se ha guardado el token')
+      })
+      .catch(function(e){
+        console.log('No se ha guardado el token')
+      })
+    })
+    .catch(function(e){
+      console.log('El usuario no ha aceptado los mensajes')
+    })
+  });
+
+  messaging.onMessage(function(payload){
+    let data = payload.notification
+
+    let title = data.title
+
+    let options = {
+      body: data.body,
+      icon: data.icon
+    }
+
+    let mensaje = new Notification(title,options)
+
+  });
+  
+
+</script>
+
+</html>

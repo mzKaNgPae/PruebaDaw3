@@ -3,6 +3,7 @@ function moneda(){
     this.nombre
     this.tipoDeCambio
     this.mensaje = "Por favor ingrese el monto."
+    this.tipoDeCambio
 
     this.convertir = function(monto){
         monto = monto.replace(',','.')
@@ -17,12 +18,10 @@ function moneda(){
     }
 }
 
-var clp = new moneda()
-    clp.nombre = "Peso Chilenos (CLP)"
-    clp.tipoDeCambio = 798.80
-
-function convertirMoneda(){
-
+function convertirMoneda(valorClp){
+    var clp = new moneda()
+    clp.nombre = "Pesos Chilenos (CLP)"
+    clp.tipoDeCambio = valorClp
     var montoSeleccionado = document.getElementById('monto').value
     clp.convertir(montoSeleccionado)
 
